@@ -1,11 +1,15 @@
 from flask import Flask, request, jsonify, render_template
 import pickle
 import numpy as np
+import os
 
 app = Flask(__name__, static_folder="static")
 
 # Load the trained model
-with open("E:/CODING/PROJECT/ML_Model_Deployment/backend/model.pkl", "rb") as f:
+
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "model.pkl")
+
+with open(MODEL_PATH, "rb") as f:
     model = pickle.load(f)
 
 # Class labels
